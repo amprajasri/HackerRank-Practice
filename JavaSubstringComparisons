@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class JavaSubstringComparisons {
+
+    public static String getSmallestAndLargest(String s, int k) {
+        
+        int n=s.length()-k+1;
+        String subStrArr[]=new String[n];
+        for(int i=0;i<n;i++)
+        {
+            subStrArr[i]=s.substring(i, i+k);
+            
+        }
+        
+        
+        int min=0;
+        int max=0;
+        int compare;
+        String temp="";
+            for(int i=0;i<n;i++)
+            {
+                
+               for(int j=i+1;j<n;j++)
+               {
+                if((subStrArr[i].compareTo(subStrArr[j]))>0)
+                   {
+                     temp=subStrArr[i];
+                     subStrArr[i]=subStrArr[j];
+                     subStrArr[j]=temp;
+                   }
+               } 
+                
+            }
+
+        
+        return subStrArr[0] + "\n" + subStrArr[n-1];
+    }
+
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String s = scan.next();
+        int k = scan.nextInt();
+        scan.close();
+      
+        System.out.println(getSmallestAndLargest(s, k));
+    }
+}
